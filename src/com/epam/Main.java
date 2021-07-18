@@ -15,15 +15,12 @@ public class Main {
         list.add(new Triangle(3521, 2553, 3178));
         list.add(new Triangle(3468, 1708, 2951));
         list.add(new Triangle(2740, 1677, 2947));
-        list.add(new Triangle(2087, 1669, 1836));
+        list.add(new Triangle(2807, 1669, 1836));
         list.add(new Triangle(2900, 2800, 2084));
         list.add(new Triangle(3312, 2084, 3083));
         list.add(new Triangle(4046, 3312, 2770));
-        list.add(new Triangle(7, 2, 8));
 
         for (int i = 0; i < list.size() - 1; i++) {
-
-
             makeMinus100(list.get(i), i);
         }
     }
@@ -33,11 +30,13 @@ public class Main {
         double delta1 = 100 / tri.sinA + 100 * tri.getCtgA() + 100 / tri.sinB + 100 * tri.getCtgB();
         double c1 = tri.c - delta1;
         double k = c1 / tri.c;
-        double b1 = k * tri.b;
-        double a1 = k * tri.a;
+        c1 = Math.round(c1);
+        double b1 = Math.round(k * tri.b);
+        double a1 = Math.round(k * tri.a);
 
         Triangle tnew1 = new Triangle(a1, b1, c1);
-        System.out.println("Сторона с уменьшилась на = " + delta1 + ", k = " + k + ", triangle N " + i + " : " + tnew1);
+        System.out.println("\n Треугольник N " + (i+1) + " старые размеры: " + tri + ",\n  новые размеры : " + tnew1);
+
     }
 }
 
@@ -67,12 +66,12 @@ class Triangle {
     }
 
     public double getCtgA() {
-        System.out.println("Угол A = " + Math.toDegrees(Math.acos(cosA)) + ", sin A = " + sinA);
+//        System.out.println("Угол A = " + Math.toDegrees(Math.acos(cosA)) + ", sin A = " + sinA);
         return Math.sqrt((1 / Math.pow(sinA, 2)) - 1);
     }
 
     public double getCtgB() {
-        System.out.println("Угол Б = " + Math.toDegrees(Math.acos(cosB)) + ", sin B = " + sinB);
+//        System.out.println("Угол Б = " + Math.toDegrees(Math.acos(cosB)) + ", sin B = " + sinB);
 
         return Math.sqrt((1 / Math.pow(sinB, 2)) - 1);
     }
